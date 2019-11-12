@@ -1,3 +1,5 @@
+x = 1
+
 maxima = {}
 def memoizer(func):
 	def decorated_maxSub(*args):
@@ -7,16 +9,19 @@ def memoizer(func):
 	return decorated_maxSub
 
 @memoizer
-def maxSub(arr, start, end):
-	if start >= len(arr):
+def maxSub(arr, i, j):
+	global x
+	print(x)
+	x += 1
+	if i >= len(arr):
 		return 0
-	if start == end:
-		return arr[start]
-	return max(arr[start], arr[start] + maxSub(arr, start+1, end))
+	if i == j:
+		return arr[i]
+	return max(arr[i], arr[i] + maxSub(arr, i+1, j))
 
 if __name__ == '__main__':
-	arr = (-3, -1, 5)
-	for i in range(1, len(arr)):
-		maxSub(arr, 0, len(arr) - i)
+	arr = (-3, -1, 5, 10, -2, 1, 1, 9)
+	for h in range(1, len(arr)):
+		maxSub(arr, 0, len(arr) - h)
 	max_score= max(maxima, key=lambda k: maxima[k])
 	print("(" + str(max_score[1]) + ", " + str(max_score[2]) + "):", maxima[max_score])
