@@ -27,4 +27,4 @@ def wordInterpret(inputNums):
 	if int(inputNums[0]) == 1 or int(inputNums[0]) == 2: 					# good number
 		return wordInterpret(inputNums[1:]) + wordInterpret(inputNums[2:]) 
 	else:
-		return wordInterpret(inputNums[1:])									# bad number
+		return wordInterpret(inputNums[1:])						# bad number
